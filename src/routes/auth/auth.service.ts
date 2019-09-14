@@ -93,9 +93,9 @@ class AuthController {
       const isMatch = await bcrypt.compare(password, result.password);
       if (isMatch) {
         const payload = {
-          id: user.id,
-          name: user.name,
-          avatar: user.avatar,
+          id: result.id,
+          name: result.name,
+          avatar: result.avatar,
         };
         const token = jwt.sign(payload, authConfig.secretKey, {
           expiresIn: 3600,

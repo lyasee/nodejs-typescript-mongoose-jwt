@@ -15,7 +15,7 @@ opts.secretOrKey = authConfig.secretKey;
 export const passportInit = (): void => {
   passport.use(
     new Strategy(opts, (jwtPayload: IUser, done: VerifiedCallback) => {
-      User.findById(jwtPayload.email)
+      User.findById(jwtPayload.id)
         .then((user?: Document & IUser) => {
           if (user) {
             return done(null, user);
